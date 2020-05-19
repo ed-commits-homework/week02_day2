@@ -16,4 +16,8 @@ class TestBus < MiniTest::Test
   def test_drive()
     assert_equal("Brum brum", @bus1.drive)
   end
+
+  def test_passengers_starts_empty()
+    assert_equal([], @bus1.passengers)
+  end
 end
