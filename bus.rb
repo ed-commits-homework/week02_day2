@@ -5,4 +5,8 @@ class Bus
     @route_number = route_number
     @distination = distination
   end
+
+  def drive
+    return "Brum brum"
+  end
 end
