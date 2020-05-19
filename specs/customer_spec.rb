@@ -12,4 +12,9 @@ class CustomerTest < MiniTest::Test
     @customer = Customer.new("John", 1000)
   end
 
+  def test_can_add_pet_to_customer_array
+    @customer.add_pet(@new_pet)
+    assert_equal(1, @customer.pet_count)
+  end
+
 end
