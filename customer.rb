@@ -14,4 +14,8 @@ class Customer
     def add_pet(pet)
         @pets << pet
     end
+
+    def get_total_value_of_pets()
+        return @pets.sum{|pet| pet.price}
+    end
 end
