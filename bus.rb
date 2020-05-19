@@ -12,7 +12,7 @@ class Bus
   end
 
   def pick_up(passenger)
-    passengers << passenger
+    @passengers << passenger
   end
 
   def count_passengers()
@@ -25,5 +25,12 @@ class Bus
 
   def empty
     @passengers = []
+  end
+
+  def pick_up_from_stop(stop)
+    for passenger in stop.queue
+      @passengers.push(passenger)
+    end
+    stop.empty
   end
 end

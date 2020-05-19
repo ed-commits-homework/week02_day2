@@ -2,6 +2,7 @@ require("minitest/autorun")
 require("minitest/reporters")
 require_relative("../bus")
 require_relative("../person")
+require_relative("../bus_stop")
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 class TestBus < MiniTest::Test
@@ -9,6 +10,11 @@ class TestBus < MiniTest::Test
     @bus1 = Bus.new(22, "Ocean Terminal")
     @person1 = Person.new("Bob", 30)
     @person2 = Person.new("Alice", 31)
+    @person3 = Person.new("Carl", 33)
+    @person4 = Person.new("Max", 39)
+    @stop1 = BusStop.new("Stop 45")
+    @stop1.add_person(@person3)
+    @stop1.add_person(@person4)
   end
 
   def test_create_bus()
@@ -46,5 +52,12 @@ class TestBus < MiniTest::Test
     @bus1.pick_up(@person2)
     @bus1.empty
     assert_equal(0, @bus1.passengers.length)
+  end
+
+  def test_pickup_from_stop
+    assert_equal(2, @stop1.count_passengers)
+    @bus1.pick_up_from_stop(@stop1)
+    assert_equal(2, @bus1.passengers.length)
+    assert_equal(0, @stop1.count_passengers)
   end
 end
