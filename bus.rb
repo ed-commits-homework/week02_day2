@@ -18,4 +18,8 @@ class Bus
   def count_passengers()
     return @passengers.length
   end
+
+  def drop_of_passengers(passenger)
+    @passengers.delete(passenger)
+  end
 end
