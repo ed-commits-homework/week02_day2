@@ -10,4 +10,8 @@ class Bus
   def drive
     return "Brum brum"
   end
+
+  def pick_up(passenger)
+    passengers << passenger
+  end
 end

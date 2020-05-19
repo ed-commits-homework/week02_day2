@@ -1,11 +1,13 @@
 require("minitest/autorun")
 require("minitest/reporters")
 require_relative("../bus")
+require_relative("../person")
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 class TestBus < MiniTest::Test
   def setup()
     @bus1 = Bus.new(22, "Ocean Terminal")
+    @person1 = Person.new("Bob", 30)
   end
 
   def test_create_bus()
@@ -19,5 +21,10 @@ class TestBus < MiniTest::Test
 
   def test_passengers_starts_empty()
     assert_equal([], @bus1.passengers)
+  end
+
+  def test_pick_up()
+    @bus1.pick_up(@person1)
+    assert_equal(1, @bus1.passengers.length)
   end
 end
